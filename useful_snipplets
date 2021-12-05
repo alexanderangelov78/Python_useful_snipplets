@@ -1,0 +1,150 @@
+#################
+#README useful sniplets from i-net
+#https://www.geeksforgeeks.org/10-python-code-snippets-for-everyday-programming-problems/
+######################
+
+#1. List Comprehension Using If-Else
+my_list = ['Multiple of 6' if i % 6 == 0 
+           else 'Multiple of 2' if i % 2 == 0 
+           else 'Multiple of 3' if i % 3 == 0 
+           else i for i in range(1, 20)]
+print(my_list)
+
+#2. Merging Two Dictionaries
+my_dict1 = {'a' : 1, 'b' : 2, 'c' : 3}
+my_dict2 = {'d' : 4, 'e' : 5, 'f' : 6}
+  
+# Method 1
+result = { **my_dict1, **my_dict2}
+print(result)
+  
+# Method 2
+result = my_dict1.copy()
+result.update(my_dict2)
+print(result)
+  
+# Method 3
+result = {key: value for d in (my_dict1, my_dict2) for key, value in d.items()}
+print(result)
+
+#3. File Handling
+
+# Open a file
+f = open('filename.txt')
+  
+  
+# Read from a file
+f = open('filename.txt', 'r')
+  
+# To read the whole file
+print(f.read())
+  
+# To read single line
+print(f.readline())
+  
+  
+# Write to a file
+f = open('filename.txt', 'w')
+f.write('Writing into a file \n')
+  
+  
+# Closing a file
+f.close()
+
+#4. Calculating Execution Time
+import time
+  
+start_time = time.time()
+  
+# printing all even numbers till 20
+for i in range(20):
+  if i % 2 == 0:
+    print(i, end = " ")
+  
+end_time = time.time()
+time_taken = end_time - start_time
+print("\nTime: ", time_taken)
+
+#5. Sorting a List of Dictionaries
+person = [
+  {
+    'name' : 'alice',
+    'age' : 22,
+    'id' : 92345
+  },
+  {
+    'name' : 'bob',
+    'age' : 24,
+    'id' : 52353
+  },
+  {
+    'name' : 'tom',
+    'age' : 23,
+    'id' : 62257
+  }
+]
+  
+# Method 1
+person.sort(key=lambda item: item.get("id"))
+print(person)
+  
+# Method 2
+person = sorted(person, key=lambda item: item.get("id"))
+print(person)
+
+#6. Finding Highest Frequency Element
+my_list = [8,4,8,2,2,5,8,0,3,5,2,5,8,9,3,8]
+print("Most frequent item:", max(set(my_list), key=my_list.count))
+
+#7. Error Handling
+um1, num2 = 2,0
+try:
+    print(num1 / num2)
+except ZeroDivisionError:
+    print("Exception! Division by Zero not permitted.")
+finally:
+    print("Finally block.")
+    
+ #8. Finding Substring in List of Strings
+ records = [
+  "Vani Gupta, University of Hyderabad",
+  "Elon Musk, Tesla",
+  "Bill Gates, Microsoft",
+  "Steve Jobs, Apple"
+]
+  
+# Method 1
+name = "Vani"
+for record in records:
+    if record.find(name) >= 0:
+        print(record)
+  
+# Method 2
+name = "Musk"
+for record in records:
+    if name in record:
+        print(record)
+        
+#9. String Formatting        
+language = "Python"
+  
+# Method 1
+print(language + " is my favourite programming language.")
+  
+# Method 2
+print(f"I code in {language}")
+  
+# Method 3
+print("%s is very easy to learn." % (language))
+  
+# Method 4
+print("I like the {} programming language.".format(language))
+
+#10. Flattening a List
+ugly_list = [10,12,36,[41,59,63],[77],81,93]
+flat = []
+for i in ugly_list:
+    if isinstance(i, list): flat.extend(i)
+    else: flat.append(i)
+print(flat)
+
